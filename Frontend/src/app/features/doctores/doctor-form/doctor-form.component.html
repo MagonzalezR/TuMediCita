@@ -1,0 +1,48 @@
+<section>
+  <header class="page__header">
+    <h1>{{ doctorId ? 'Editar doctor' : 'Nuevo doctor' }}</h1>
+    <a routerLink="/doctores">Volver</a>
+  </header>
+
+  <form class="form card" [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="form__field">
+      <label for="nombres">Nombres</label>
+      <input id="nombres" type="text" formControlName="nombres" />
+    </div>
+
+    <div class="form__field">
+      <label for="apellidos">Apellidos</label>
+      <input id="apellidos" type="text" formControlName="apellidos" />
+    </div>
+
+    <div class="form__field">
+      <label for="documento">Documento</label>
+      <input id="documento" type="text" formControlName="documento" />
+    </div>
+
+    <div class="form__field">
+      <label for="telefono">Teléfono</label>
+      <input id="telefono" type="text" formControlName="telefono" />
+    </div>
+
+    <div class="form__field">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+    </div>
+
+    <div class="form__field">
+      <label for="especialidad_id">Especialidad</label>
+      <select id="especialidad_id" formControlName="especialidad_id">
+        <option [ngValue]="null" disabled>Selecciona una especialidad</option>
+        <option *ngFor="let especialidad of especialidades" [ngValue]="especialidad.id">
+          {{ especialidad.nombre }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form__actions">
+      <button type="submit" class="btn btn--primary" [disabled]="guardando">Guardar</button>
+      <a routerLink="/doctores" class="btn">Cancelar</a>
+    </div>
+  </form>
+</section>

@@ -1,0 +1,40 @@
+<section>
+  <header class="page__header">
+    <h1>Citas {{ doctorId ? 'del doctor seleccionado' : '' }}</h1>
+    <a class="btn btn--primary" routerLink="/citas/nueva">Nueva cita</a>
+  </header>
+
+  <p class="muted" *ngIf="cargando">Cargando citas...</p>
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <table class="table" *ngIf="!cargando && citas.length">
+    <thead>
+      <tr>
+        <th>Paciente</th>
+        <th>Doctor</th>
+        <th>Especialidad</th>
+        <th>Fecha</th>
+        <th>Motivo</th>
+        <th>Estado</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cita of citas">
+        <td>{{ cita.paciente?.nombres }} {{ cita.paciente?.apellidos }}</td>
+        <td>{{ cita.doctor?.nombres }} {{ cita.doctor?.apellidos }}</td>
+        <td><span class="badge">{{ cita.doctor?.especialidad?.nombre }}</span></td>
+        <td>{{ cita.fecha }}</td>
+        <td>{{ cita.motivo }}</td>
+        <td>{{ cita.estado }}</td>
+        <td class="table__actions">
+          <button (click)="eliminar(cita.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="muted" *ngIf="!cargando && !citas.length && !error">
+    No hay citas registradas para este filtro.
+  </p>
+</section>

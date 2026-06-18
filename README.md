@@ -180,3 +180,10 @@ Los archivos generados se almacenan en `dist/citas-medicas-frontend`.
 - **Frontend**: Vercel.
 - **Backend**: Vercel.
 - **Base de datos**: PostgreSQL administrado en Supabase.
+
+## Evidencia de funcionamiento
+A continuacion se puede ver un video con el funcionamiento de la aplicación
+https://jam.dev/c/4e680642-ef33-47b6-ba13-ed3e9254a241
+
+Y esta es la version desplegada del frontend disponible para revision en el siguiente link
+https://medi-citas-6au3qwnwz-miguel-gonzalezs-projects-6706fe9e.vercel.app/citas/nueva

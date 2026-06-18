@@ -1,0 +1,39 @@
+<section>
+  <header class="page__header">
+    <h1>Pacientes</h1>
+    <a class="btn btn--primary" routerLink="/pacientes/nuevo">Nuevo paciente</a>
+  </header>
+
+  <p class="muted" *ngIf="cargando">Cargando pacientes...</p>
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <table class="table" *ngIf="!cargando && pacientes.length">
+    <thead>
+      <tr>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Documento</th>
+        <th>Teléfono</th>
+        <th>Email</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let paciente of pacientes">
+        <td>{{ paciente.nombres }}</td>
+        <td>{{ paciente.apellidos }}</td>
+        <td>{{ paciente.documento }}</td>
+        <td>{{ paciente.telefono }}</td>
+        <td>{{ paciente.email }}</td>
+        <td class="table__actions">
+          <a [routerLink]="['/pacientes', paciente.id, 'editar']">Editar</a>
+          <button (click)="eliminar(paciente.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="muted" *ngIf="!cargando && !pacientes.length && !error">
+    Todavía no hay pacientes registrados.
+  </p>
+</section>

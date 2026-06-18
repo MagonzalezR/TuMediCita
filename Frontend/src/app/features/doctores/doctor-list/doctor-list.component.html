@@ -1,0 +1,38 @@
+<section>
+  <header class="page__header">
+    <h1>Doctores</h1>
+    <a class="btn btn--primary" routerLink="/doctores/nuevo">Nuevo doctor</a>
+  </header>
+
+  <p class="muted" *ngIf="cargando">Cargando doctores...</p>
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <table class="table" *ngIf="!cargando && doctores.length">
+    <thead>
+      <tr>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Especialidad</th>
+        <th>Email</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doctor of doctores">
+        <td>{{ doctor.nombres }}</td>
+        <td>{{ doctor.apellidos }}</td>
+        <td><span class="badge">{{ doctor.especialidad?.nombre }}</span></td>
+        <td>{{ doctor.email }}</td>
+        <td class="table__actions">
+          <a [routerLink]="['/citas']" [queryParams]="{ doctorId: doctor.id }">Ver citas</a>
+          <a [routerLink]="['/doctores', doctor.id, 'editar']">Editar</a>
+          <button (click)="eliminar(doctor.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="muted" *ngIf="!cargando && !doctores.length && !error">
+    Todavía no hay doctores registrados.
+  </p>
+</section>

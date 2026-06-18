@@ -1,0 +1,48 @@
+<section>
+  <header class="page__header">
+    <h1>{{ pacienteId ? 'Editar paciente' : 'Nuevo paciente' }}</h1>
+    <a routerLink="/pacientes">Volver</a>
+  </header>
+
+  <form class="form card" [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="form__field">
+      <label for="nombres">Nombres</label>
+      <input id="nombres" type="text" formControlName="nombres" />
+    </div>
+
+    <div class="form__field">
+      <label for="apellidos">Apellidos</label>
+      <input id="apellidos" type="text" formControlName="apellidos" />
+    </div>
+
+    <div class="form__field">
+      <label for="documento">Documento</label>
+      <input id="documento" type="text" formControlName="documento" />
+    </div>
+
+    <div class="form__field">
+      <label for="fechaNacimiento">Fecha de nacimiento</label>
+      <input id="fechaNacimiento" type="date" formControlName="fechaNacimiento" />
+    </div>
+
+    <div class="form__field">
+      <label for="telefono">Teléfono</label>
+      <input id="telefono" type="text" formControlName="telefono" />
+    </div>
+
+    <div class="form__field">
+      <label for="email">Email</label>
+      <input id="email" type="email" formControlName="email" />
+    </div>
+
+    <div class="form__field">
+      <label for="direccion">Dirección</label>
+      <input id="direccion" type="text" formControlName="direccion" />
+    </div>
+
+    <div class="form__actions">
+      <button type="submit" class="btn btn--primary" [disabled]="guardando">Guardar</button>
+      <a routerLink="/pacientes" class="btn">Cancelar</a>
+    </div>
+  </form>
+</section>

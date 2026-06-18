@@ -1,0 +1,48 @@
+<section>
+  <header class="page__header">
+    <h1>Nueva cita</h1>
+    <a routerLink="/citas">Volver</a>
+  </header>
+
+  <form class="form card" [formGroup]="form" (ngSubmit)="guardar()">
+    <div class="form__field">
+      <label for="pacienteId">Paciente</label>
+      <select id="pacienteId" formControlName="pacienteId">
+        <option [ngValue]="null" disabled>Selecciona un paciente</option>
+        <option *ngFor="let paciente of pacientes" [ngValue]="paciente.id">
+          {{ paciente.nombres }} {{ paciente.apellidos }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form__field">
+      <label for="doctorId">Doctor</label>
+      <select id="doctorId" formControlName="doctorId" (change)="onDoctorChange()">
+        <option [ngValue]="null" disabled>Selecciona un doctor</option>
+        <option *ngFor="let doctor of doctores" [ngValue]="doctor.id">
+          {{ doctor.nombres }} {{ doctor.apellidos }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form__field" *ngIf="doctorSeleccionado">
+      <label>Especialidad</label>
+      <span class="badge">{{ doctorSeleccionado.especialidad?.nombre }}</span>
+    </div>
+
+    <div class="form__field">
+      <label for="fecha">Fecha y hora</label>
+      <input id="fecha" type="datetime-local" formControlName="fecha" />
+    </div>
+
+    <div class="form__field">
+      <label for="motivo">Motivo</label>
+      <textarea id="motivo" formControlName="motivo" rows="3"></textarea>
+    </div>
+
+    <div class="form__actions">
+      <button type="submit" class="btn btn--primary" [disabled]="guardando">Agendar cita</button>
+      <a routerLink="/citas" class="btn">Cancelar</a>
+    </div>
+  </form>
+</section>

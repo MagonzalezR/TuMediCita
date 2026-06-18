@@ -31,8 +31,8 @@
     </div>
 
     <div class="form__field">
-      <label for="especialidadId">Especialidad</label>
-      <select id="especialidadId" formControlName="especialidadId">
+      <label for="especialidad_id">Especialidad</label>
+      <select id="especialidad_id" formControlName="especialidad_id">
         <option [ngValue]="null" disabled>Selecciona una especialidad</option>
         <option *ngFor="let especialidad of especialidades" [ngValue]="especialidad.id">
           {{ especialidad.nombre }}

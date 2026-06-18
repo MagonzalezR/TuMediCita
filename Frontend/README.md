@@ -96,7 +96,7 @@ erDiagram
 
 ## Contrato esperado con la API REST (FastAPI)
 
-El frontend asume los siguientes recursos bajo `environment.apiUrl` (por defecto `http://localhost:8000/api`):
+El frontend asume los siguientes recursos bajo `environment.apiUrl`:
 
 ```
 GET    /especialidades
@@ -154,40 +154,6 @@ La aplicación queda disponible en `http://localhost:4200`.
 npm run build:prod
 ```
 
-Los archivos estáticos se generan en `dist/citas-medicas-frontend`, listos para desplegarse en Vercel, Netlify o cualquier hosting estático.
-
-### 6. Crear y poblar la base de datos
-
-```bash
-cd database
-DB_NAME=citas_medicas DB_USER=postgres DB_PASSWORD=tu_password DB_HOST=localhost DB_PORT=5432 ./create_and_run_db.sh
-```
-
-El script:
-
-1. Crea la base de datos si no existe.
-2. Ejecuta `schema.sql` (creación de tablas, llaves foráneas e índices).
-3. Ejecuta `seed.sql` (datos de ejemplo: especialidades, doctores, pacientes y citas).
+Los archivos estáticos se generan en `dist/citas-medicas-frontend`, listos para desplegarse.
 
 Este script fue probado de extremo a extremo sobre PostgreSQL 16.
-
-## Control de versiones
-
-```bash
-git init
-git add .
-git commit -m "Base del frontend Angular para gestión de citas médicas"
-git branch -M main
-git remote add origin <URL_DEL_REPOSITORIO>
-git push -u origin main
-```
-
-## Despliegue sugerido
-
-- **Frontend**: Vercel o Netlify, apuntando al comando de build `npm run build:prod` y carpeta de salida `dist/citas-medicas-frontend/browser`.
-- **Backend (FastAPI)**: Render o Railway, exponiendo la URL para configurarla en `environment.prod.ts`.
-- **Base de datos**: instancia administrada de PostgreSQL en Render, Railway o Supabase (capa gratuita).
-
-## Evidencia de funcionamiento
-
-Agregar aquí capturas de pantalla o un GIF mostrando: listado de pacientes, listado de doctores con sus citas, formulario de creación de cita y eliminación de una cita.

@@ -24,7 +24,7 @@ export class DoctorFormComponent implements OnInit {
     documento: ['', Validators.required],
     telefono: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    especialidadId: [null as number | null, Validators.required]
+    especialidad_id: [null as number | null, Validators.required]
   });
 
   constructor(
@@ -54,7 +54,7 @@ export class DoctorFormComponent implements OnInit {
     }
 
     const valor = this.form.getRawValue();
-    const payload = { ...valor, especialidadId: Number(valor.especialidadId) };
+    const payload = { ...valor, especialidad_id: Number(valor.especialidad_id) };
     this.guardando = true;
 
     const peticion = this.doctorId

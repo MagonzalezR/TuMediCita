@@ -7,6 +7,6 @@ export interface Doctor {
   documento: string;
   telefono: string;
   email: string;
-  especialidadId: number;
+  especialidad_id: number;
   especialidad?: Especialidad;
 }

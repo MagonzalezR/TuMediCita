@@ -1,0 +1,21 @@
+# Frontend / Angular
+**/node_modules/
+**/dist/
+**/.angular/
+**/.vscode/
+**/*.log
+**/.env
+**/.env.*
+
+# Backend / Python
+**/__pycache__/
+**/*.py[cod]
+**/*.pyo
+**/*.pyd
+**/.venv/
+**/venv/
+**/.pytest_cache/
+**/.mypy_cache/
+**/.coverage
+**/htmlcov/
+**/*.sqlite3
